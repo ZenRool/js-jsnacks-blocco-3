@@ -113,9 +113,11 @@ class Games{
     }
     // console.log(constHome);
     play() {
+        console.log("--------Inizio girone d'andata");
         for(let i = 0; i < 19; i++ ){
             // la giornata 
             // console.log( this.home, this.away, "Giornata :", i+1);
+            console.log(`--Inizio ${i+1} giornata`);
             for (let j = 0; j < 10; j++) {
                 const win = rndWinner();
                 console.log(this.teams[this.home[j]].getTeamName() , " contro " , this.teams[this.away[j]].getTeamName());
@@ -141,13 +143,15 @@ class Games{
             this.home.splice(1, 0, this.away[0]);
             this.home.splice(10, 1);
             this.away.splice(0, 1);
-
+            
 
         }
         this.home = [...this.costAway];
         this.away = [...this.costHome];
+        console.log("--------Inizio girone di ritorno");
         // girone di ritorno 
         for(let i = 19; i < 38; i++ ){
+            console.log(`--Inizio ${i+1} giornata`);   
             // la giornata 
             // console.log( this.home, this.away , "Giornata :", i+1);
             for (let j = 0; j < 10; j++) {
@@ -167,7 +171,7 @@ class Games{
                     this.teams[this.away[j]].win();
                 }
                 this.teams[this.home[j]].addAggFoul(rndFoulMatch());
-                this.teams[this.away[j]].addAggFoul(rndFoulMatch());   
+                this.teams[this.away[j]].addAggFoul(rndFoulMatch());
             }
             
             this.home.push(this.away[9]); 
