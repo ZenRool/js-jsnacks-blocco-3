@@ -26,7 +26,7 @@ class Team {
         return this.aggFoul;
     }
     // Setter 
-    // non chedo che cambino il nome della squadra durante il torneo
+    // non credo che cambino il nome della squadra durante il torneo
     // setTeamName(teamName) {
     //     this.teamName = teamName; 
     // }
@@ -49,3 +49,49 @@ class Team {
     }
 }
 
+// Main
+// Faccio le squadre
+const teams = [
+    new Team("Atalanta"),
+    new Team("Bologna"),
+    new Team("Cagliari"),
+    new Team("Empoli"),
+    new Team("Fiorentina"),
+    new Team("Genoa"),
+    new Team("Inter"),
+    new Team("Juventus"),
+    new Team("Complessati"),
+    new Team("Milan"),
+    new Team("Napoli"),
+    new Team("aaa Maggica"),
+    new Team("Salernitana"),
+    new Team("Sampdoria"),
+    new Team("Sassuolo"),
+    new Team("Spezia"),
+    new Team("Torino"),
+    new Team("Udinese"),
+    new Team("Venezia"),
+    new Team("Verona"),
+];
+// per ogni squadra do un numero casuale di falli subiti da 50 a 150 e un numero di punti casuale da 20 a 100
+teams.forEach(rndPointFoul);
+
+// ordina l'array in base ai punti fatti
+teams.sort((a, b) =>  (a.point < b.point) ? 1 : (a.point === b.point) ? ((a.aggFoul < b.aggFoul) ? 1 : -1) : -1 )
+console.log(teams);
+
+
+
+
+// do un numero casuale al punteggio e i falli subiti team
+function rndPointFoul(objTeam) {
+    objTeam.setPoint(getRandomInt(20, 100));
+    objTeam.setAggFoul(getRandomInt(50, 150));
+}
+
+// Random Integer number 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+}
